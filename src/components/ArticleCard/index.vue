@@ -9,36 +9,53 @@
 <style lang="scss" scoped>
 @import "@/assets/styles/var.scss";
 .article {
-  padding: $margin-md;
+  padding: $padding-sm $padding-md;
+  box-sizing: border-box;
 
-  &-author {
-    margin-bottom: $margin-base;
-    height: 24px;
+  &-topbar {
+    color: $gray-6;
+    font-size: $base-font-size-sm + 1px;
+    line-height: 22px;
+    margin-bottom: 10px;
 
-    &--name {
-      margin-left: $margin-xs;
+    &--author {
+      color: $gray-7;
+      cursor: pointer;
+      &:hover {
+        color: $blue-dark;
+      }
     }
   }
 
   &-title {
-    line-height: 1.6;
-    color: $gray-9;
-    font-size: $base-font-size-xl;
-    font-weight: 500;
-    // margin-bottom: $margin-xs;
-  }
-
-  &-content {
-    word-break: break-word;
-    line-height: 1.6;
-    font-size: 15px;
-    color: $gray-7;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: $base-font-size-lg;
+    line-height: 24px;
+    color: $gray-8;
     margin-bottom: $margin-xs;
   }
 
-  &-comment {
+  &-content {
+    font-weight: 400;
+    font-size: $base-font-size-sm + 1px;
+    line-height: 22px;
+    color: $gray-6;
+    margin-bottom: 10px;
+  }
+
+  &-img {
     margin-left: $margin-lg;
+    flex-shrink: 0;
+  }
+
+  &-footer {
+    &--like,
+    &--comment,
+    &--share {
+      margin-right: $margin-base * 5;
+      font-size: $base-font-size-sm + 1px;
+      color: $gray-7;
+    }
   }
 }
 </style>
@@ -60,50 +77,104 @@
         </a-row>
       </a-space>
     </a-skeleton> -->
-    <div class="article-author align-center">
-      <a-avatar :size="24" shape="square">A</a-avatar>
-      <div class="article-author--name">Lokep</div>
-      <div class="article-author--intro">，毕业于华北科技学院</div>
-    </div>
-    <div class="article-title">如何评价《为战争叫好的都是傻逼》这篇文章？</div>
-    <div class="article-content">
-      是真真实实存在的。人不是动物，他有各种各样的需求和自已的想法，如果一个政府缺乏组织执行能力，方舱就会变成集中营，封控管理也会变成范围清理。
-    </div>
-    <a-space class="article-operation align-center">
 
-      <a-button type="outline" status="primary" size="small" plain :loading="false">
-        <template #icon>
-          <IconThumbUp />
-        </template>
-        <template #default>赞同</template>
-      </a-button>
+    <div class="article-topbar">
+      <text class="article-topbar--author">蚂蚁RichLab前端团队</text>
+      <a-divider direction="vertical" />
+      <text>3天前</text>
+      <a-divider direction="vertical" />
+      <text>Javascript · Vue</text>
+    </div>
+    <div class="article-body flex">
+      <div class="flex-1">
 
-      <a-button type="text" size="small" plain style="color: #8590a6">
-        <template #icon>
-          <IconMessage />
-        </template>
-        <template #default>评论</template>
-      </a-button>
-      
-      <a-button type="text" size="small" plain style="color: #8590a6">
-        <template #icon>
-          <IconSend />
-        </template>
-        <template #default>分享</template>
-      </a-button>
-    </a-space>
+        <router-link class="article-title ellipsis-1" to="/">看看axios</router-link>
+
+        <div class="article-content ellipsis-1">
+          公司地址：北京市海淀区信息路甲28号13层B座13B-5公司地址：北京市海淀区信息路甲28号13层B座13B-5
+        </div>
+
+        <div class="article-footer flex">
+          <div class="article-footer--like">
+            <IconThumbUp />
+            点赞
+          </div>
+          <router-link class="article-footer--comment" to="/">
+            <IconMessage />
+            评论
+          </router-link>
+          <div class="article-footer--share">
+            <IconSend />
+            分享
+          </div>
+        </div>
+      </div>
+      <router-link class="article-img" to="/">
+        <a-image
+          width="120"
+          height="80"
+          src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp"
+        />
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { IconMessage, IconThumbUp, IconSend } from "@arco-design/web-vue/es/icon";
+import {
+  IconMessage,
+  IconThumbUp,
+  IconSend,
+} from "@arco-design/web-vue/es/icon";
 
 export default defineComponent({
   components: {
     IconMessage,
     IconThumbUp,
-    IconSend
+    IconSend,
+  },
+  props: {
+    author: {
+      type: String,
+      default: "",
+    },
+    time: {
+      type: String,
+      default: "",
+    },
+    title: {
+      type: String,
+      default: "",
+    },
+    tags: {
+      type: Array,
+      default: () => [],
+    },
+    content: {
+      type: String,
+      default: "",
+    },
+    agrees: {
+      type: Number,
+      default: 0,
+    },
+    comments: {
+      type: Number,
+      default: 0,
+    },
+    shares: {
+      type: Number,
+      default: 0,
+    },
+    url: {
+      type: String,
+      default: "",
+    },
+    img: {
+      type: String,
+      default: "",
+    },
   },
   setup() {},
 });

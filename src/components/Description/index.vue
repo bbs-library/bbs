@@ -5,12 +5,12 @@
   box-sizing: border-box;
 
   &-item {
-    padding: $padding-base 0;
+    // padding: $padding-base 0;
     color: $gray-6;
     font-weight: 500;
     font-size: $base-font-size-sm + 1px;
     line-height: 2;
-    margin-bottom: $margin-base;
+    margin-bottom: $margin-sm;
 
     flex-wrap: wrap;
 

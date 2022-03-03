@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex">
+  <div class="container flex homepage">
     <div class="leftbar shadow">
       <div class="sticky" style="background: #fff">
         <a-tabs default-active-key="1">
@@ -16,7 +16,7 @@
     </div>
 
     <div class="sidebar" ref="containerRef">
-      <a-affix :offsetTop="5" :target="containerRef">
+      <a-affix :offsetTop="1" :target="containerRef">
         <Description />
       </a-affix>
     </div>
@@ -51,6 +51,14 @@ export default defineComponent({
 });
 </script>
 
+<style lang="scss">
+.homepage {
+  .arco-tabs-content{
+    padding-top: 0;
+  }
+}
+</style>
+
 <style lang="scss" scoped>
 @import "@/assets/styles/var.scss";
 .container {
@@ -67,7 +75,7 @@ export default defineComponent({
   background-color: $white;
 
   & + .sidebar {
-    margin-left: $margin-sm;
+    margin-left: $margin-md;
   }
 }
 
