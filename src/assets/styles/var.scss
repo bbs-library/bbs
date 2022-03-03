@@ -1,0 +1,58 @@
+$base-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+  Helvetica, Segoe UI, Arial, Roboto, "PingFang SC", "miui", "Hiragino Sans GB",
+  "Microsoft Yahei", sans-serif;
+
+@mixin multi-ellipsis($lines: 0) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+$black: #000;
+$white: #fff;
+$gray-1: #f7f8fa;
+$gray-2: #f6f6f6;
+$gray-3: #f0f2f7;
+$gray-4: #dcdee0;
+$gray-5: #c8c9cc;
+$gray-6: #8590a6;
+$gray-7: #646566;
+$gray-8: #323233;
+$gray-9: #121212;
+
+
+$red: #F56C6C;
+
+$blue: #409EFF;
+$blue-dark: #06f;
+
+$orange: #ff976a;
+
+$orange-dark: rgb(247,114,52);
+$orange-light: rgb(255,243,232);
+
+$green: #67C23A;
+
+$base-font-size-sm: 12px;
+$base-font-size: 14px;
+$base-font-size-lg: 16px;
+$base-font-size-xl: 18px;
+
+
+// Padding
+$padding-base: 4px;
+$padding-xs: $padding-base * 2;
+$padding-sm: $padding-base * 3;
+$padding-md: $padding-base * 4;
+$padding-lg: $padding-base * 6;
+$padding-xl: $padding-base * 8;
+
+// Margin
+$margin-base: 4px;
+$margin-xs: $margin-base * 2;
+$margin-sm: $margin-base * 3;
+$margin-md: $margin-base * 4;
+$margin-lg: $margin-base * 6;
+$margin-xl: $margin-base * 8;
